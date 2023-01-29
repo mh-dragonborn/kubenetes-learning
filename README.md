@@ -1,1 +1,3 @@
-# kubenetes-learning
+# kubernetes-learning
+
+why kubernetes
