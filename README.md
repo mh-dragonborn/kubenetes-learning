@@ -37,4 +37,45 @@ kube-controller-manager管理整个kubernetes集群中的控制器，主要包�
 
 - kubelet
 kubelet存在于每个节点中，并且管理那些由kubernetes创建的容器，保证他们按照指定的PodSpecs来运行
+- kube-proxy
+kube-proxy存在于每个节点中，用于管理节点中pod与集群内外的网络通讯
+- Container runtime
+Container runtime是运行容器的软件，常见的是Containerd,CRI-O
+
+## 了解kubernetes的对象
+
+### 先看一个比较简单的yaml文件
+
+```
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: nginx-deployment
+    namespace: mynamespace
+  spec:
+    selector:
+      matchLabels:
+        app: nginx
+    replicas: 2 # tells deployment to run 2 pods matching the template
+    template:
+      metadata:
+        labels:
+          app: nginx
+      spec:
+        containers:
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+          - containerPort: 80
+```
+- apiVersion：表示使用的apiserver的版本
+- kind：表示该资源的类型
+- metadata：该资源的元属性，需要有一个唯一的name属性,namespace属性是可选的，不填就是default
+- spec: 该资源的具体参数
+  - selector： 表示这个deployment之管理label中含有 app:nginx的pod
+  - replicas： 表示这个pod会创建两个
+  - template： 表示这个deployment管理的pod的具体参数
+    - metadata: pod的元属性 里面就包含这个pod带有的label标签
+    - spec： pod的具体参数
+      - containers： 这个pod所用的容器信息，包含镜像，及其端口号 
 
