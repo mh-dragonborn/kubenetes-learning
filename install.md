@@ -11,3 +11,8 @@ kubectl create secret -n <namespaceName> docker-registry <secretName> \
   --docker-username=<username> \
   --docker-password=<password> \
   --docker-email=<email>
+
+ 修改/etc/containerd/config.toml文件
+  
+  
+ 
