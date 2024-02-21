@@ -1,3 +1,6 @@
+如何在不使用docker desktop的情况下打包镜像
+https://dev.to/fanmixco/how-to-compile-docker-images-in-windows-without-docker-desktop-using-wsl2-1pk9
+
 kuboard安装地址
 https://kuboard.cn/
 
